@@ -7,8 +7,15 @@
           size="is-small"
           v-model="busValue"
         >
-          <option class="is-paddingless" value="none" key="none">Colectivo</option>
-          <option class="is-paddingless" v-for="line in busLines" :value="line" :key="line">
+          <option class="is-paddingless" value="none" key="none"
+            >Colectivo</option
+          >
+          <option
+            class="is-paddingless"
+            v-for="line in busLines"
+            :value="line"
+            :key="line"
+          >
             {{ line }}
           </option>
         </b-select>
@@ -21,7 +28,12 @@
           v-model="subwayValue"
         >
           <option class="is-paddingless" value="none">Subte</option>
-          <option class="is-paddingless" v-for="line in subwayLines" :value="line" :key="line">
+          <option
+            class="is-paddingless"
+            v-for="line in subwayLines"
+            :value="line"
+            :key="line"
+          >
             {{ line }}
           </option>
         </b-select>
@@ -34,7 +46,12 @@
           v-model="trainValue"
         >
           <option class="is-paddingless" value="none" key="none">Tren</option>
-          <option class="is-paddingless" v-for="line in trainLines" :value="line" :key="line">
+          <option
+            class="is-paddingless"
+            v-for="line in trainLines"
+            :value="line"
+            :key="line"
+          >
             {{ line }}
           </option>
         </b-select>
@@ -98,11 +115,20 @@ export default {
           .catch(error => console.log(error));
       }
     },
-
     onTrainLineSelection(line) {
-      if (line) this.$nextTick(() => (this.trainValue = "none"));
+      if (line) {
+        this.$nextTick(() => (this.trainValue = "none"));
+        if (this.addToFrontIfExists(line, "train")) return;
+        api
+          .getTrainRoutesForLine(line)
+          .then(response => {
+            let route = response.data;
+            route["type"] = "train";
+            this.routes.unshift(route);
+          })
+          .catch(error => console.log(error));
+      }
     },
-
     addToFrontIfExists(line, type) {
       var idx = this.routes.findIndex(
         elem => elem.type + elem.line == type + line

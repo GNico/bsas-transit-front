@@ -18,6 +18,9 @@ export default {
   getSubwayRoutesForLine(line) {
     return repository.get("/subway/routes?line=" + line);
   },
+  getTrainRoutesForLine(line) {
+    return repository.get("/train/routes?line=" + line);
+  },
   getItineraries(startLat, startLon, endLat, endLon, distance) {
     return repository.get(`/itinerary?startLat=${startLat}&startLon=${startLon}&endLat=${endLat}
       &endLon=${endLon}&distance=${distance}`);

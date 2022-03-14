@@ -40,10 +40,10 @@
     <ContextMenu id="menu" ref="menu">
       <template slot-scope="{ contextData }">
         <ContextMenuItem @click.native="setStartPosMenu(contextData)">
-          Marcar ubicación de partida 
+          Marcar ubicación de partida
         </ContextMenuItem>
         <ContextMenuItem @click.native="setEndPosMenu(contextData)">
-          Marcar ubicación de destino 
+          Marcar ubicación de destino
         </ContextMenuItem>
         <ContextMenuItem @click.native="$refs.menu.close">
           Buscar lineas cercanas

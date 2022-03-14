@@ -24,7 +24,6 @@
         dashArray="7"
       ></l-polyline>
     </div>
-
   </div>
 </template>
 
@@ -34,13 +33,13 @@ import { LPolyline } from "vue2-leaflet";
 
 export default {
   components: {
-    LPolyline,
+    LPolyline
   },
   props: {
     itinerary: {
       type: Array,
       default: () => []
-    },
+    }
   },
   methods: {
     coordsToLatLngs(coords) {

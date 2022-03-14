@@ -8,11 +8,12 @@
       </template>
 
       <b-dropdown-item aria-role="listitem" class="info-dropdown has-text-left">
-        <div class="has-text-left is-size-7 mb-2">Escriba 
-          una dirección en la forma <b>[calle altura]</b> o un cruce de
+        <div class="has-text-left is-size-7 mb-2">
+          Escriba una dirección en la forma <b>[calle altura]</b> o un cruce de
           calles en la forma <b>[calle y calle]</b>. También puede agregar la
-          ciudad, partido o localidad despues de una coma. <br>Ejemplo: <b>Corrientes 2000, Caba.</b>
-          <br>Alternativamente, haga <b>Click derecho</b> en el mapa en la ubicación deseada.
+          ciudad, partido o localidad despues de una coma. <br />Ejemplo:
+          <b>Corrientes 2000, Caba.</b> <br />Alternativamente, haga
+          <b>Click derecho</b> en el mapa en la ubicación deseada.
         </div>
       </b-dropdown-item>
     </b-dropdown>

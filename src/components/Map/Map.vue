@@ -79,7 +79,7 @@ export default {
     endPos: {
       type: Object,
       default: () => ({})
-    },
+    }
   },
   data() {
     return {

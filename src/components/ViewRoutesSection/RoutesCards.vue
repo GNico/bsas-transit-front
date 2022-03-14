@@ -15,6 +15,14 @@
         @select="changeSelectedRoutes($event, route.type + route.line)"
         @close="removeLineRoutes(route.type + route.line)"
       />
+
+      <TrainRoutesCard
+        v-if="route.type == 'train'"
+        :routes="route.routes"
+        :line="route.line"
+        @select="changeSelectedRoutes($event, route.type + route.line)"
+        @close="removeLineRoutes(route.type + route.line)"
+      />
     </div>
   </div>
 </template>
@@ -22,11 +30,13 @@
 <script>
 import BusRoutesCard from "./BusRoutesCard.vue";
 import SubwayRouteCard from "./SubwayRouteCard.vue";
+import TrainRoutesCard from "./TrainRoutesCard.vue";
 
 export default {
   components: {
     BusRoutesCard,
-    SubwayRouteCard
+    SubwayRouteCard,
+    TrainRoutesCard
   },
   props: {
     routes: {

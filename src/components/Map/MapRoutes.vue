@@ -9,6 +9,14 @@
         :weight="5"
       ></l-polyline>
 
+      <l-polyline
+        v-if="item.type == 'train'"
+        :key="item.uniqueRouteId"
+        :lat-lngs="coordsToLatLngs(item.path.coordinates)"
+        color="purple"
+        :weight="5"
+      ></l-polyline>
+
       <template v-if="item.type == 'subway'">
         <l-polyline
           :key="item.uniqueRouteId"
