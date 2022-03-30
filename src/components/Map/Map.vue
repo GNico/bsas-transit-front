@@ -33,28 +33,25 @@
       />
     </CustomIconMarker>
 
+    <CustomIconMarker
+      color="purple"
+      iconClass="mdi-information-variant"
+      iconColor="purple"
+    >
+      <l-marker
+        v-if="infoPos.lat && infoPos.lng"
+        slot-scope="{ customIcon }"
+        :icon="customIcon"
+        :lat-lng="infoPos"
+        visible
+        draggable
+        @dragend="$emit('update:infoPos', $event.target._latlng)"
+      />
+    </CustomIconMarker>
+
     <slot name="routes"> </slot>
 
     <slot name="itinerary"> </slot>
-    <!-- 
-    <div v-for="(step, i) in itinerary" :key="i">
-      <l-polyline
-        v-if="step.busRoute"
-        :lat-lngs="coordsToLatLngs(step.busRoute.path.coordinates)"
-        color="red"
-        :weight="8"
-        :opacity="0.8"
-      ></l-polyline>
-
-      <l-polyline
-        :key="i"
-        :lat-lngs="coordsToLatLngs(step.travelPath.coordinates)"
-        color="blue"
-        dashArray="7"
-      ></l-polyline>
-    </div>
-
-    Itinerary -->
   </l-map>
 </template>
 
@@ -77,6 +74,10 @@ export default {
       default: () => ({})
     },
     endPos: {
+      type: Object,
+      default: () => ({})
+    },
+    infoPos: {
       type: Object,
       default: () => ({})
     }

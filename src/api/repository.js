@@ -12,6 +12,9 @@ export default {
   getLines() {
     return repository.get("/lines");
   },
+  getLinesCloseTo(lat, lon) {
+    return repository.get(`/lines?lat=${lat}&lon=${lon}`);
+  },
   getBusRoutesForLine(line) {
     return repository.get("/bus/routes?line=" + line);
   },

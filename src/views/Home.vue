@@ -5,16 +5,22 @@
       <div class="column is-3 sidebar">
         <RoutesSection
           v-show="sectionIndex == 0"
-          class="p-2"
+          class="p-2 pt-4"
           @select="selected => (selectedRoutes = selected)"
         />
 
         <ItinerarySection
           v-show="sectionIndex == 1"
-          class="p-2"
+          class="p-2 pt-4"
           :startPos.sync="startPos"
           :endPos.sync="endPos"
           @update:selectedItinerary="selectedItinerary = $event"
+        />
+
+        <InformationSection
+          v-show="sectionIndex == 2"
+          class="p-2 pt-4"
+          :infoPos.sync="infoPos"
         />
       </div>
 
@@ -23,6 +29,7 @@
         <Map
           :startPos.sync="startPos"
           :endPos.sync="endPos"
+          :infoPos.sync="infoPos"
           @rightclick="$refs.menu.open($event.event, $event.data)"
         >
           <template #routes>
@@ -45,8 +52,11 @@
         <ContextMenuItem @click.native="setEndPosMenu(contextData)">
           Marcar ubicación de destino
         </ContextMenuItem>
-        <ContextMenuItem @click.native="$refs.menu.close">
-          Buscar lineas cercanas
+        <ContextMenuItem @click.native="setInfoPosMenu(contextData)">
+          Mas información...
+        </ContextMenuItem>
+        <ContextMenuItem @click.native="clearAll">
+          Limpiar puntos marcados
         </ContextMenuItem>
       </template>
     </ContextMenu>
@@ -61,6 +71,7 @@ import MapRoutes from "@/components/Map/MapRoutes.vue";
 import MapItinerary from "@/components/Map/MapItinerary.vue";
 import RoutesSection from "@/components/ViewRoutesSection/RoutesSection.vue";
 import ItinerarySection from "@/components/ItinerarySection/ItinerarySection.vue";
+import InformationSection from "@/components/InformationSection/InformationSection.vue";
 
 export default {
   name: "Home",
@@ -71,7 +82,8 @@ export default {
     MapRoutes,
     MapItinerary,
     RoutesSection,
-    ItinerarySection
+    ItinerarySection,
+    InformationSection
   },
   props: {
     sectionIndex: {
@@ -84,6 +96,7 @@ export default {
       selectedRoutes: [],
       startPos: {},
       endPos: {},
+      infoPos: {},
       selectedItinerary: []
     };
   },
@@ -94,6 +107,16 @@ export default {
     },
     setEndPosMenu(pos) {
       this.endPos = pos;
+      this.$refs.menu.close();
+    },
+    setInfoPosMenu(pos) {
+      this.infoPos = pos;
+      this.$refs.menu.close();
+    },
+    clearAll() {
+      this.startPos = {};
+      this.endPos = {};
+      this.infoPos = {};
       this.$refs.menu.close();
     }
   },
