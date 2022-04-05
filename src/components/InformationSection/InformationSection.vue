@@ -24,7 +24,10 @@
         </div>
       </div>
 
-      <div class="columns mb-0" v-if="closeLines.busLines.length">
+      <div
+        class="columns mb-0"
+        v-if="closeLines.busLines && closeLines.busLines.length"
+      >
         <div class="column is-4 has-text-weight-bold has-text-right">
           Colectivos
         </div>
@@ -33,7 +36,10 @@
         </div>
       </div>
 
-      <div class="columns mb-0" v-if="closeLines.subwayLines.length">
+      <div
+        class="columns mb-0"
+        v-if="closeLines.subwayLines && closeLines.subwayLines.length"
+      >
         <div class="column is-4 has-text-weight-bold has-text-right">
           Subte
         </div>
@@ -42,7 +48,10 @@
         </div>
       </div>
 
-      <div class="columns mb-0" v-if="closeLines.trainLines.length">
+      <div
+        class="columns mb-0"
+        v-if="closeLines.trainLines && closeLines.trainLines.length"
+      >
         <div class="column is-4 has-text-weight-bold has-text-right">
           Trenes
         </div>

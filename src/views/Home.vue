@@ -104,14 +104,17 @@ export default {
     setStartPosMenu(pos) {
       this.startPos = pos;
       this.$refs.menu.close();
+      this.$emit("update:sectionIndex", 1);
     },
     setEndPosMenu(pos) {
       this.endPos = pos;
       this.$refs.menu.close();
+      this.$emit("update:sectionIndex", 1);
     },
     setInfoPosMenu(pos) {
       this.infoPos = pos;
       this.$refs.menu.close();
+      this.$emit("update:sectionIndex", 2);
     },
     clearAll() {
       this.startPos = {};

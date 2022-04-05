@@ -3,12 +3,16 @@
     <b-navbar type="is-light">
       <template #brand>
         <b-navbar-item>
-          <img src="@/assets/bondilogo.png"/>
+          <img src="@/assets/bondilogo.png" />
         </b-navbar-item>
       </template>
 
       <template #start>
-        <b-navbar-item href="#" @click="sectionIndex = 0" style="border-left: 2px solid rgba(0,0,0,0.1)">
+        <b-navbar-item
+          href="#"
+          @click="sectionIndex = 0"
+          style="border-left: 2px solid rgba(0,0,0,0.1)"
+        >
           Recorridos
         </b-navbar-item>
         <b-navbar-item href="#" @click="sectionIndex = 1">
@@ -20,7 +24,7 @@
       </template>
     </b-navbar>
 
-    <Home :sectionIndex="sectionIndex" />
+    <Home :sectionIndex.sync="sectionIndex" />
   </div>
 </template>
 
