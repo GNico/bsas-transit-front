@@ -56,7 +56,8 @@ const stepsDefinition = {
     iconClass: "walk",
     // eslint-disable-next-line
     getStepHeader: step => "",
-    getText: step => "Caminar hasta " + step.endLocation + "."
+    // eslint-disable-next-line
+    getText: step => "Caminar."
   },
   bus: {
     iconClass: "bus",
@@ -155,6 +156,13 @@ export default {
       if (this.isOpen == akey) {
         this.isOpen = 0;
         this.$emit("selected", []);
+      }
+    }
+  },
+  watch: {
+    isOpen(newVal) {
+      if (newVal) {
+        console.log(newVal);
       }
     }
   }
