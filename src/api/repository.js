@@ -1,8 +1,6 @@
 import axios from "axios";
 
-const baseDomain = "http://192.168.0.120:8888";
-//const baseDomain = "http://0.0.0.0:8888";
-const baseURL = baseDomain + "";
+const baseURL = process.env.VUE_APP_BACKEND_URL;
 
 const repository = axios.create({
   baseURL
@@ -16,13 +14,13 @@ export default {
     return repository.get(`/lines?lat=${lat}&lon=${lon}`);
   },
   getBusRoutesForLine(line) {
-    return repository.get("/bus/routes?line=" + line);
+    return repository.get("/bus/routes/" + line);
   },
   getSubwayRoutesForLine(line) {
-    return repository.get("/subway/routes?line=" + line);
+    return repository.get("/subway/routes/" + line);
   },
   getTrainRoutesForLine(line) {
-    return repository.get("/train/routes?line=" + line);
+    return repository.get("/train/routes/" + line);
   },
   getItineraries(startLat, startLon, endLat, endLon, distance) {
     return repository.get(`/itinerary?startLat=${startLat}&startLon=${startLon}&endLat=${endLat}
